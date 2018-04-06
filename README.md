@@ -2,7 +2,7 @@
 
 https://chrsmrrtt.github.io/gn2018/
 
-App that picks an entries 10 random horses for Christopher Marriott's Overly Complicated Grand National Sweepstake, 2018.
+App that picks an entrant's 10 random horses for Christopher Marriott's Overly Complicated Grand National Sweepstake, 2018.
 
 ## Requirements
 
