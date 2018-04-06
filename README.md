@@ -1,5 +1,5 @@
 # gn2018
-Horse picker for the 2018 Grand National
+App the picks an entries 10 random horse for Christopher Marriott's Overly Complicated Grand National Sweepstake, 2018.
 
 ## Requirements
 * Entrant types in their name.
