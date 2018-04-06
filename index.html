@@ -1,10 +1,114 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Christopher Marriott's Overly Complicated Grand National Sweepstake, 2018</title>
-  </head>
-  <body>
-    <h1>Christopher Marriott's Overly Complicated Grand National Sweepstake, 2018</h1>
-    <h2>Under construction.</h2>
-  </body>
+    <head>
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&amp;subset=latin-ext" rel="stylesheet">
+        <script src="jquery.js"></script>
+        <script>
+            var horses = [
+                {number: 1, name: "Alice", odds: 10},
+                {number: 2, name: "Bob", odds: 20},
+                {number: 3, name: "Cheryl", odds: 30},
+                {number: 4, name: "Daniel", odds: 40},
+                {number: 5, name: "Emma", odds: 50}
+            ];
+
+            function random_horses(n) {
+                var shuffled = horses.slice(0), i = horses.length, temp, index;
+                while (i--) {
+                    index = Math.floor((i + 1) * Math.random());
+                    temp = shuffled[index];
+                    shuffled[index] = shuffled[i];
+                    shuffled[i] = temp;
+                }
+                return shuffled.slice(0, n);
+            }
+
+            function create_list_node(number, name, odds) {
+                var li = document.createElement("li");
+                li.setAttribute("hidden", "");
+                li.textContent = "#" + number + " \"" + name + "\" @ " + odds + "/1";
+                return li;
+            }
+
+            function reveal() {
+                $("button").hide();
+                $("input").attr("readonly", "readonly")
+
+                var entry_horses = random_horses(3);
+
+                var list = $("ul#entry");
+
+                entry_horses.forEach(function(horse){
+                    var li_node = create_list_node(horse.number, horse.name, horse.odds);
+                    $(list).append(li_node);
+                });
+
+                $("ul#entry li").each(function(index) {
+                    $(this).delay(2000*index).fadeIn(300);
+                });
+            }
+        </script>
+        <style>
+            * {
+                margin: 0px;
+                line-height: 110%;
+            }
+
+            body {
+                max-width: 31em;
+                margin: auto;
+                margin-top: 0.5em;
+                text-align: center;
+                font-family: "Open Sans Condensed", sans-serif;
+                font-size: 24px;
+            }
+
+            h1 {
+                text-transform: uppercase;
+                color: #005346;
+                margin-bottom: 0.6em;
+            }
+
+            #pick-button {
+                padding: 0.5em 2em;
+                text-transform: uppercase;
+                background-color: #bf0019;
+                font-family: "Open Sans Condensed", sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                color: #ffffff;
+                border-radius: 5px;
+                border: none;
+                margin-bottom: 1em;
+            }
+
+            ul {
+                list-style-type: none;
+                padding-left: 0px;
+            }
+            
+            li {
+                margin-bottom: 0.5em;
+                font-family: "Open Sans Condensed", sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+            }
+
+            #name {
+                width: 20em;
+                background-color: #ffffdd;
+                font-family: "Open Sans Condensed", sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Christopher Marriott's<br />Overly Complicated<br />Grand National<br />Sweepstake, 2018</h1>
+        <div><input id="name" type="text" placeholder="Entrant" /></div>
+        <div><button id="pick-button" type="button" onclick="reveal()">Pick horses</button></div>
+        <ul id="entry"></ul>
+    </body>
 </html>
