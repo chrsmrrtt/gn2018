@@ -9,7 +9,42 @@
                 {number: 2, name: "Bob", odds: 20},
                 {number: 3, name: "Cheryl", odds: 30},
                 {number: 4, name: "Daniel", odds: 40},
-                {number: 5, name: "Emma", odds: 50}
+                {number: 5, name: "Emma", odds: 50},
+				{number: 6, name: "Fred", odds: 50},
+				{number: 7, name: "Gloria", odds: 50},
+				{number: 8, name: "Henry", odds: 60},
+				{number: 9, name: "Irene", odds: 70},
+				{number: 10, name: "Jack", odds: 80},
+				{number: 11, name: "Karen", odds: 90},
+				{number: 12, name: "Lee", odds: 100},
+				{number: 13, name: "Marge", odds: 11},
+				{number: 14, name: "Neil", odds: 21},
+				{number: 15, name: "Olga", odds: 31},
+				{number: 16, name: "Pete", odds: 41},
+				{number: 17, name: "Quinn", odds: 51},
+				{number: 18, name: "Robert", odds: 61},
+				{number: 19, name: "Sally", odds: 71},
+				{number: 20, name: "Trevor", odds: 81},
+				{number: 21, name: "Una", odds: 91},
+				{number: 22, name: "Victor", odds: 101},
+				{number: 23, name: "Wendy", odds: 12},
+				{number: 24, name: "Xavier", odds: 22},
+				{number: 25, name: "Yolande", odds: 32},
+				{number: 26, name: "Zack", odds: 42},
+				{number: 27, name: "Albania", odds: 52},
+				{number: 28, name: "Brazil", odds: 62},
+				{number: 29, name: "Cuba", odds: 72},
+				{number: 30, name: "Denmark", odds: 82},
+				{number: 31, name: "Ecuador", odds: 92},
+				{number: 32, name: "Finland", odds: 102},
+				{number: 33, name: "Greece", odds: 13},
+				{number: 34, name: "Hungary", odds: 23},
+				{number: 35, name: "Iran", odds: 33},
+				{number: 36, name: "Japan", odds: 43},
+				{number: 37, name: "Kenya", odds: 53},
+				{number: 38, name: "Laos", odds: 63},
+				{number: 39, name: "Mali", odds: 73},
+				{number: 40, name: "Niger", odds: 83}				
             ];
 
             function random_horses(n) {
@@ -34,7 +69,7 @@
                 $("button").hide();
                 $("input").attr("readonly", "readonly")
 
-                var entry_horses = random_horses(3);
+                var entry_horses = random_horses(10);
 
                 var list = $("ul#entry");
 
