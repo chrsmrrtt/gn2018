@@ -72,15 +72,21 @@
           var entry_horses = random_horses(10);
 
           var list = $("ul#entry");
+          var ta = $("#output");
+          var entrant = $("#name").val();
 
           entry_horses.forEach(function(horse){
               var li_node = create_list_node(horse.number, horse.name, horse.odds);
               $(list).append(li_node);
+              $(ta).append(document.createTextNode(horse.number + "\t"));
           });
 
           $("ul#entry li").each(function(index) {
               $(this).delay(2000*index).fadeIn(300);
           });
+
+          $(ta).text(entrant + "\t" + entry_horses.map(horse => horse.number).join("\t"));
+          $(ta).fadeIn(300);
       }
     </script>
     <style>
@@ -138,6 +144,10 @@
             text-align: center;
             margin-bottom: 1em;
         }
+
+        #output {
+          width: 100%;
+        }
     </style>
   </head>
   <body>
@@ -145,6 +155,6 @@
     <div><input id="name" type="text" placeholder="Entrant" /></div>
     <div><button id="pick-button" type="button" onclick="reveal()">Pick horses</button></div>
     <ul id="entry"></ul>
-    <textarea id="#output" readonly></textarea>
+    <textarea id="output" readonly hidden rows="1"></textarea>
   </body>
 </html>
