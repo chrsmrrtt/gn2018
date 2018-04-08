@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <title>Christopher Marriott's Overly Complicated Grand National Sweepstake, 2018</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&amp;subset=latin-ext" rel="stylesheet">
     <script src="jquery.js"></script>
     <script>
@@ -46,6 +48,9 @@
         {number: 39, name: "Mali", odds: 73},
         {number: 40, name: "Niger", odds: 83}
       ];
+      
+      var keyframe_speed = 2000;
+      var fade_speed = 500;
 
       function random_horses(n) {
           var shuffled = horses.slice(0), i = horses.length, temp, index;
@@ -61,7 +66,7 @@
       function create_list_node(number, name, odds) {
           var li = document.createElement("li");
           li.setAttribute("hidden", "");
-          li.textContent = "#" + number + " \"" + name + "\" @ " + odds + "/1";
+          li.innerHTML = "<small class='number'><small>#</small>" + number + "</small> <span class='name'>\"" + name + "\"</span> <small class='odds'><small>@</small> " + odds + "/1</small>";
           return li;
       }
 
@@ -82,11 +87,23 @@
           });
 
           $("ul#entry li").each(function(index) {
-              $(this).delay(2000*index).fadeIn(300);
+              $(this).delay(keyframe_speed*index).fadeIn(fade_speed);
           });
+          
+          var gl_node = document.createElement("li");
+          gl_node.setAttribute("hidden", "");
+          gl_node.setAttribute("class", "gl");
+          gl_node.textContent = "Good luck!";
+          $(list).append(gl_node);
+          $(gl_node).delay(keyframe_speed*10).fadeIn(fade_speed);
+          
+          $("#data").delay(keyframe_speed*10).fadeIn(fade_speed);
 
           $(ta).text(entrant + "\t" + entry_horses.map(horse => horse.number).join("\t"));
-          $(ta).fadeIn(300);
+      }
+      
+      function showData() {
+        window.prompt("Copy and paste to Google Sheet", document.querySelector("#output").value);
       }
     </script>
     <style>
@@ -144,17 +161,44 @@
             text-align: center;
             margin-bottom: 1em;
         }
-
-        #output {
-          width: 100%;
+        
+        .gl {
+          margin-top: 1em;
+          color: #bf0019;
+        }
+        
+        #data {
+            padding: 0.5em 0.5em;
+            text-transform: uppercase;
+            background-color: #dddddd;
+            font-family: "Open Sans Condensed", sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #333333;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 1em;
+        }
+        
+        .number {
+          color: #888888;
+        }
+        
+        .name {
+        
+        }
+        
+        .odds {
+          color: #835300;
         }
     </style>
   </head>
   <body>
     <h1>Christopher Marriott's<br />Overly Complicated<br />Grand National<br />Sweepstake, 2018</h1>
-    <div><input id="name" type="text" placeholder="Entrant" /></div>
+    <div><input id="name" type="text" placeholder="Entrant's name&hellip;" autocomplete="off" /></div>
     <div><button id="pick-button" type="button" onclick="reveal()">Pick horses</button></div>
     <ul id="entry"></ul>
-    <textarea id="output" readonly hidden rows="1"></textarea>
+    <textarea id="output" hidden></textarea>
+    <button type="button" id="data" onclick="showData()" hidden>Get data</button>
   </body>
 </html>
