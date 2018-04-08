@@ -109,7 +109,7 @@
     </script>
     <style>
 
-        body {
+        #container {
           max-width: 31em;
           margin: auto;
           margin-top: 0.5em;
@@ -193,11 +193,13 @@
     </style>
   </head>
   <body>
-    <h1>Christopher Marriott's<br />Overly Complicated<br />Grand National<br />Sweepstake, 2018</h1>
-    <div><input id="name" type="text" placeholder="Entrant's name&hellip;" autocomplete="off" /></div>
-    <div><button id="pick-button" type="button" onclick="reveal()">Pick horses</button></div>
-    <ul id="entry"></ul>
-    <textarea id="output" hidden></textarea>
-    <button type="button" id="data" onclick="showData()" hidden>Get data</button>
+    <div id="container">
+      <h1>Christopher Marriott's<br />Overly Complicated<br />Grand National<br />Sweepstake, 2018</h1>
+      <div><input id="name" type="text" placeholder="Entrant's name&hellip;" autocomplete="off" /></div>
+      <div><button id="pick-button" type="button" onclick="reveal()">Pick horses</button></div>
+      <ul id="entry"></ul>
+      <textarea id="output" hidden></textarea>
+      <button type="button" id="data" onclick="showData()" hidden>Get data</button>
+    </div>
   </body>
 </html>
