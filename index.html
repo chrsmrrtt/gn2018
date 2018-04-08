@@ -66,8 +66,8 @@
 
       function create_list_node(number, name, odds) {
           var li = document.createElement("li");
-          li.setAttribute("hidden", "");
-          li.innerHTML = "<small class='number'><small>#</small>" + number + "</small> <span class='name'>\"" + name + "\"</span> <small class='odds'><small>@</small> " + odds + "-to-1</small>";
+          li.setAttribute("style", "display: none;");
+          li.innerHTML = "<span class='number'>#" + number + "</span> <span class='name'>&quot;" + name + "&quot;</span> <span class='odds'>@ " + odds + "-to-1</span>";
           return li;
       }
 
@@ -92,7 +92,7 @@
           });
           
           var gl_node = document.createElement("li");
-          gl_node.setAttribute("hidden", "");
+          gl_node.setAttribute("style", "display: none;");
           gl_node.setAttribute("class", "gl");
           gl_node.textContent = "Good luck!";
           $(list).append(gl_node);
