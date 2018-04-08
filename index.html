@@ -67,7 +67,7 @@
       function create_list_node(number, name, odds) {
           var li = document.createElement("li");
           li.setAttribute("hidden", "");
-          li.innerHTML = "<small class='number'><small>#</small>" + number + "</small> <span class='name'>\"" + name + "\"</span> <small class='odds'><small>@</small> " + odds + "/1</small>";
+          li.innerHTML = "<small class='number'><small>#</small>" + number + "</small> <span class='name'>\"" + name + "\"</span> <small class='odds'><small>@</small> " + odds + "-to-1</small>";
           return li;
       }
 
@@ -181,6 +181,7 @@
         
         .number {
           color: #888888;
+          font-size: 12pt;
         }
         
         .name {
@@ -189,6 +190,7 @@
         
         .odds {
           color: #835300;
+          font-size: 12pt;
         }
     </style>
   </head>
